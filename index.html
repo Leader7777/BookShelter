@@ -10,8 +10,44 @@
 </head>
 <body>
     
-    
+    <header class="container d-flex justify-content-between align-items-center" style="padding-top: 11px;margin-bottom: 11px;">
 
+        <h1 class="visually-hidden">BookShelter about books</h1>
+
+        <div class="d-flex justify-content-between align-content-center">
+            <div>
+              <a href="#"><img src="./components/BookShelter_logotip.svg" alt="logo" width="226" height="44"></a>
+            </div>
+            <div class="input_wrapper">
+                <input class="form-control" type="text" id="inputName" placeholder="Search books" required autocomplete="off">
+                <img class="input_img" src="./components/lupa.svg" alt="lupa" width="19px" height="19px">
+            </div>
+        </div>
+        <div>
+            <button class="border-0 bg-body" type="button" id="btnDarkMode">
+                <img src="./components/sun.svg" alt="sun" width="23" height="23">
+            </button>
+        </div>
+        
+    </header>
+
+    <main class="container">
+        <div class="border border-2 d-flex justify-content-between align-items-center" style="padding-right: 41px;">
+
+            <h2 style="font-size: 15px;padding-top: 20px;padding-bottom: 19px;margin-left: 306px;">
+                Showing <span id="bookNumber">0</span> Result(s)
+            </h2>
+
+            <div class="order_wrap d-flex justify-content-between">
+                <img src="./components/order.svg" alt="order" width="24" height="24">
+                <h2 style="font-size: 14px;line-height: 17px;padding-top: 4px;">Order by newest</h2>
+            </div>
+
+        </div>
+    </main>
+    
+    
+    
     <script src="./js/bootstrap.js"></script>
     <script src="./js/app.js"></script>
 </body>
