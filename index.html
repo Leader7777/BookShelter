@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="./css/main.css">
     <title>BookShelter</title>
 </head>
-<body>
+<body id="body">
     
     <header class="container d-flex justify-content-between align-items-center" style="padding-top: 11px;margin-bottom: 11px;">
-
+        
         <h1 class="visually-hidden">BookShelter about books</h1>
-
+        
         <div class="d-flex justify-content-between align-content-center">
             <div>
-              <a href="#"><img src="./components/BookShelter_logotip.svg" alt="logo" width="226" height="44"></a>
+                <a href="#"><img src="./components/BookShelter_logotip.svg" alt="logo" width="226" height="44"></a>
             </div>
             <div class="input_wrapper">
                 <input class="form-control" type="text" id="inputName" placeholder="Search books" required autocomplete="off">
@@ -24,31 +24,156 @@
             </div>
         </div>
         <div>
-            <button class="border-0 bg-body" type="button" id="btnDarkMode">
-                <img src="./components/sun.svg" alt="sun" width="23" height="23">
+            <button class="border-0" type="button" id="btnDarkMode" style="background-color: transparent;">
+                <img id="darkImg" src="./components/sun.svg" alt="sun" width="23" height="23">
             </button>
         </div>
         
     </header>
-
+    
     <main class="container">
-        <div class="border border-2 d-flex justify-content-between align-items-center" style="padding-right: 41px;">
-
+        
+        <div class="border border-2 d-flex justify-content-between align-items-center" style="padding-right: 41px;margin-bottom: 2px;">
+            
             <h2 style="font-size: 15px;padding-top: 20px;padding-bottom: 19px;margin-left: 306px;">
                 Showing <span id="bookNumber">0</span> Result(s)
             </h2>
-
-            <div class="order_wrap d-flex justify-content-between">
+            
+            <div class="order_wrap d-flex justify-content-between" id="orderNew">
                 <img src="./components/order.svg" alt="order" width="24" height="24">
                 <h2 style="font-size: 14px;line-height: 17px;padding-top: 4px;">Order by newest</h2>
             </div>
+            
+        </div>
+        
+        <div class="row">
+
+            <div class="col-3" style="padding-top: 25px;padding-left: 25px;padding-right: 25px;" >
+                
+                <h2 style="font-size: 24px;line-height: 28px;margin-bottom: 5px;">
+                    Bookmarks
+                </h2>
+                
+                <h3 style="font-size: 14px;line-height: 155.6%;max-width: 218px;">
+                    If you don't like to read, you haven't found the right book
+                </h3>
+
+                <ul class="list-group gap-2" id="bookmarkeds">
+                    
+                   
+                </ul>
+                
+            </div>
+
+            <div class="col-9">
+                <div class="row d-flex justify-content-between " style="padding-top: 40px;" id="bookList">
+            
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </main>
+
+<!------------------------- templates ---------------------------------->
+
+    <template id="bookmarkedTemplate">
+
+        <div class="row d-flex justify-content-start align-items-center gap-5" style=" padding: 15px 10px 15px 10px;background-color: #F8FAFD;border-radius: 4px;">
+
+            <div class="col-2 ms-0 ps-0 " style="width: 105px;">
+                <h2 class="h2 m-0" id="bookmarkedName" style="font-size: 20px;"></h2>
+                <p class="m-0" style="width: 105px;" id="bookmarkedText"></p>
+            </div>
+
+            <div class="col-1 d-flex gap-3">
+                
+                    <a class="border-0" type="button" style="background-color: transparent;" id="readBookmarked" target="_blank">
+                        <img src="./components/reading.svg" alt="reading" width="24" height="24">
+                    </a>
+
+                    <button class="border-0 " type="button" style="background-color: transparent;">
+                        <img  id="deleteBookmarked" src="./components/delete.svg" alt="delete" width="24" height="24">
+                    </button>
+
+            </div>
 
         </div>
-    </main>
+
+    </template>
+
+
+
+    <template id="bookTemplate">
+
+        <div class="col-4 d-flex justify-content-between mb-5">
+            <div class="card p-2 px-1 pb-2">
+
+
+                <div class="card-img-top p-1" style="background: #F8FAFD;border-radius: 5px;width: 250px;height: 240px;">
+                    <img id="bookImg" height="200" width="235">
+                </div>
+
+                <div class="card-body">
+                    <h2 class="h6" id="bookName" style="height: 40px;"></h2>
+                    <p id="bookAvtor" style="height: 30px;"></p>
+                    <p id="bookYear"></p>
+
+                    <div class="btn-group gap-2 w-100">
+                        <button class="btn btn-warning fw-bold" type="button" style="color: black;height: 37px;border-radius: 4px;" id="bookmarkedBtn">Bookmark</button>
+                        <button class="btn btn-outline-primary fw-bold" type="button" style="color: blue;height: 37px;font-size: 14px;border-radius: 4px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="modalBtn">
+                            More Info
+                        </button>
+
+                    </div>
+
+                    <a class="btn btn-secondary w-100 my-1 fw-bold" target="_blank" type="button" style="color: #F8FAFD;" id="readBtn">Read</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </template>
+
     
+    
+    <div class="offcanvas offcanvas-end modalInfo" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="h5 modalHeading" id="offcanvasRightLabel"></h3>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+            <img class="modalImg" style="margin-left: 50px;margin-bottom: 50px;" width="229" height="300">
+            <p class="modalText mb-3"></p>
+            <p class="fw-bold" style="color: black;">Authors: <span class="modalAuthors mx-3 px-2" style="background: rgba(13, 117, 255, 0.09);border-radius: 30px;color: blue;"></span></p>
+
+            <p class="fw-bold" style="color: black;">Published: <span class="modalPublished mx-3 px-2" style="background: rgba(13, 117, 255, 0.09);border-radius: 30px;color: blue;"></span></p>
+
+            <p class="fw-bold" style="color: black;">Publishers: <span class="modalPublishers mx-3 px-2" style="background: rgba(13, 117, 255, 0.09);border-radius: 30px;color: blue;"></span></p>
+
+            <p class="fw-bold" style="color: black;">Categories: <span class="modalCategories mx-3 px-2" style="background: rgba(13, 117, 255, 0.09);border-radius: 30px;color: blue;"></span></p>
+
+            <p class="fw-bold" style="color: black;">Pages Count: <span class="modalPages mx-3 px-2" style="background: rgba(13, 117, 255, 0.09);border-radius: 30px;color: blue;"></span></p>
+
+            <a class="btn btn-secondary w-25 my-1 fw-bold" target="_blank" type="button" style="color: #F8FAFD;margin-left: 250px;" id="modalBtn">Read</a>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
     
     
     <script src="./js/bootstrap.js"></script>
     <script src="./js/app.js"></script>
 </body>
 </html>
+

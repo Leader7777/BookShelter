@@ -25,9 +25,22 @@
     font-display: swap;
 }
 
-h2{
+body{
+    cursor: pointer;
+}
+
+h2,h3{
     font-family: 'Rubik' , sans-serif;
     font-weight: 500;
+}
+
+p{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #757881;
 }
 
 
@@ -67,3 +80,26 @@ h2{
     padding: 5px 13px 5px 16px;
     color: aliceblue;
 }
+
+.card{
+    width: 280px;
+    height: 480px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.black{
+    background-color: rgb(51, 47, 47);
+    color: #000000;
+}
+
+.white{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+.bgc{
+    background-color: rgb(51, 47, 47);
+}
+
