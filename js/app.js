@@ -153,7 +153,6 @@ elBookmarkeds.addEventListener("click" , (evt) => {
         
         bookmarkedBooks.splice(controlIndex , 1)
         storage.setItem("books" , JSON.stringify(bookmarkedBooks))
-        storage.clear()
         renderBookmarkedBooks(bookmarkedBooks , elBookmarkeds)
 
     }
